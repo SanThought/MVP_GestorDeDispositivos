@@ -12,8 +12,15 @@ public:
     void submitRequest(const IORequest& request);
     void processRequests();
 
-    // Método público para establecer el buffer del teclado
+    // Métodos para simular entradas y salidas de dispositivos
     void setKeyboardBuffer(const std::string& input);
+    std::string getKeyboardBuffer();
+
+    void writeToDisplay(const std::string& text);
+    std::string getDisplayBuffer();
+
+    void writeStorage(int address, const std::string& data);
+    std::string readStorage(int address);
 
 private:
     std::queue<IORequest> ioQueue;
@@ -25,9 +32,9 @@ private:
     void handleDisplay(const IORequest& request);
 
     // Simulación de dispositivos
-    std::string storage[100];  // Almacenamiento simulado
-    std::string keyboardBuffer; // Buffer del teclado
-    std::string displayBuffer;  // Buffer de la pantalla
+    std::string storage[100];    // Almacenamiento simulado
+    std::string keyboardBuffer;  // Buffer del teclado
+    std::string displayBuffer;   // Buffer de la pantalla
 };
 
 #endif // DEVICEMANAGER_H

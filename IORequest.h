@@ -3,23 +3,26 @@
 
 #include <string>
 
+// Enumeración para los tipos de dispositivos soportados
 enum class DeviceType {
-    Storage,
-    Keyboard,
-    Display
+    Storage,   // Almacenamiento
+    Keyboard,  // Teclado
+    Display    // Pantalla
 };
 
+// Enumeración para los tipos de operaciones de I/O
 enum class OperationType {
-    Read,
-    Write
+    Read,   // Leer
+    Write   // Escribir
 };
 
+// Estructura que representa una solicitud de I/O
 struct IORequest {
-    int processId;
-    DeviceType device;
-    OperationType operation;
-    std::string data; // For write operations
-    int address;      // For storage operations
+    int processId;                // ID único del proceso que realiza la solicitud
+    DeviceType device;            // Tipo de dispositivo (Storage, Keyboard, Display)
+    OperationType operation;      // Tipo de operación (Read, Write)
+    std::string data;             // Datos a escribir (solo para operaciones de Write)
+    int address;                  // Dirección en el almacenamiento (solo para Storage)
 };
 
 #endif // IOREQUEST_H
