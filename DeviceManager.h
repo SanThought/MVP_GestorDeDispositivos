@@ -4,28 +4,30 @@
 #include "IORequest.h"
 #include <queue>
 #include <mutex>
+#include <string>
 
 class DeviceManager {
 public:
-    // Function for other components to submit I/O requests
+    // Métodos públicos
     void submitRequest(const IORequest& request);
-
-    // Function to process I/O requests (can be called in a loop or periodically)
     void processRequests();
+
+    // Método público para establecer el buffer del teclado
+    void setKeyboardBuffer(const std::string& input);
 
 private:
     std::queue<IORequest> ioQueue;
-    std::mutex queueMutex; // To ensure thread safety if needed
+    std::mutex queueMutex;
 
-    // Device handling methods
+    // Métodos privados para manejar los dispositivos
     void handleStorage(const IORequest& request);
     void handleKeyboard(const IORequest& request);
     void handleDisplay(const IORequest& request);
 
-    // Simulated devices
-    std::string storage[100]; // Simplified storage device
-    std::string keyboardBuffer;
-    std::string displayBuffer;
+    // Simulación de dispositivos
+    std::string storage[100];  // Almacenamiento simulado
+    std::string keyboardBuffer; // Buffer del teclado
+    std::string displayBuffer;  // Buffer de la pantalla
 };
 
 #endif // DEVICEMANAGER_H

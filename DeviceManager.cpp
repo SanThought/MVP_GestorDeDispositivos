@@ -57,3 +57,7 @@ void DeviceManager::handleDisplay(const IORequest& request) {
         std::cout << "Process " << request.processId << " wrote to display: " << request.data << std::endl;
     }
 }
+
+void DeviceManager::setKeyboardBuffer(const std::string& input) {
+    keyboardBuffer = input;
+}
